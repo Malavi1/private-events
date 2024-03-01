@@ -1,0 +1,11 @@
+<h1>THESE ARE ALL LIST OF THE EVENTS YOU CREATE</h1>
+
+<h1>Here You Can See All Events YOU Created</h1>
+<% @events.each do |event| %>
+    <h3>
+        <%= event.place%>
+    </h3>
+    <h4>
+        <%= event.time%>
+    </h4>
+<%end%>

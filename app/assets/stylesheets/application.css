@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ button{
+    padding: 10px 20px;
+    font-size: larger;
+ }

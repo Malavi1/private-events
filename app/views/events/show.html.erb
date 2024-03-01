@@ -1,0 +1,28 @@
+<button><%= link_to  "All Events", root_path %></button>
+<button><%= link_to 'Create events', new_events_path %></button>
+<% if user_signed_in? %>
+  <button><%= link_to  "Sign out", destroy_user_session_path %></button>
+  <button><%= link_to  "Profile", user_path(current_user) %></button>
+<% end %>
+<h1>
+  <%= @event.place %>
+</h1>
+<h2>Date</h2>
+<%= @event.place %>
+<h2>Place</h2>
+<%= @event.place %>
+<%= form_with url: '/join', method: :post do |f|%>
+  <%= f.hidden_field :event_id, value: @event.id %>
+  <br>
+  <button><%= f.submit 'Join this events' %></button>
+<% end %>
+<h2>Attendees</h2>
+<% if @event.attendees.any? %>
+  <ul>
+    <% @event.attendees.each do |attendee| %>
+      <li><%= attendee.email %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No attendees for this event.</p>
+<% end %>

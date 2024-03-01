@@ -1,0 +1,38 @@
+<button><%= link_to 'Create New Event', new_events_path%></button>
+<button><%= link_to 'All My Events', root_path%></button>
+
+<% if user_signed_in?%>
+    <button><%= link_to 'SignOut', destroy_user_session_path %></button>
+    <button><%= link_to 'UserProfile', user_path(current_user)%></button>
+<%end%>
+
+<h1>All Events</h1>
+
+<h2>Today's Events</h2>
+<%if @events_today.any?%>
+    <% @events_today.each do |event|%>
+        <button><%= link_to event.place, events_path(event)%></button>
+    <%end%>
+<%else%>
+    <p>No Events Today</p>
+<%end%>
+
+<h2>Future Events</h2>
+
+<% if @events_future.any?%>
+    <% @events_future.each do |event|%>
+        <button><%= link_to event.place, events_path(event)%></button>   
+    <%end%>
+<%else%>
+    <P>No Future Events Found</P>
+<%end%>
+
+<h2>Past Events</h2>
+<% if @events_past.any?%>
+    <% @events_past.each do |event|%>
+        <button><%= link_to event.place, events_path(event)%></button>
+    <%end%>
+<%else%>
+    <p>No Past Events Found</p>
+<%end%>
+

@@ -1,0 +1,30 @@
+<%if user_signed_in? %>
+    <button><%= link_to 'User_profile', user_path(current_user)%></button>
+    <button><%= link_to 'SignOut', destroy_user_session_path%></button>
+<%end%>
+<br>
+
+<%if @event.errors.any?%>
+    <div id="error-explanation">
+        <h2><%= pluralize(@event.errors.count, 'errors')%>prohibited the user from save</h2>
+        <ul>
+            <%=@event.errors.full_messages.each do |msg|%>
+                <li><%=msg%></li>
+            <%end%>
+        </ul>
+    </div>
+<%end%>
+
+
+<h1>Create Your Next Another Event 💥</h1>
+<%= form_with model: @event do |f| %>
+    <%= f.label 'Please Enter the location'%>
+    <%= f.text_field :place%>
+    <br>
+    <br>
+    <%= f.label 'Please Enter Timings Of The Event'%>
+    <%= f.text_field :time%>
+    <br>
+    <br>
+    <%=f.submit 'Create The Event'%>
+<%end%>
